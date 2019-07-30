@@ -1,17 +1,17 @@
 import 'package:movie_search_core/src/model/movie_feed.dart';
 
 class SearchState {
-  State state;
+  RequestState requestState;
   MovieFeed movieFeed;
   String message;
 
-  SearchState.ERROR(this.state, this.message);
+  SearchState.ERROR(this.requestState, this.message);
 
-  SearchState.LOADING(this.state);
+  SearchState.LOADING(this.requestState);
 
-  SearchState.SUCCESS(this.state, this.movieFeed);
+  SearchState.SUCCESS(this.requestState, this.movieFeed);
 
   SearchState.EMPTY();
 }
 
-enum State { LOADING, SUCCESS, ERROR }
+enum RequestState { LOADING, SUCCESS, ERROR }
