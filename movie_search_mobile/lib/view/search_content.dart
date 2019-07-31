@@ -11,7 +11,6 @@ class SearchContent extends StatelessWidget {
         bloc: BlocProvider.of<SearchBloc>(context),
         builder: (BuildContext context, SearchState state) {
           if (state.requestState == null) {
-            //RequestState EMPTY
             return Text('Please enter a movie name to begin');
           } else if (state.requestState == RequestState.LOADING) {
             return CircularProgressIndicator();
@@ -20,7 +19,9 @@ class SearchContent extends StatelessWidget {
           } else {
             return (state.movieFeed == null || state.movieFeed.search.isEmpty)
                 ? Text("No Results")
-                : Expanded(child: MovieList(state.movieFeed.search),);
+                : Expanded(
+                    child: MovieList(state.movieFeed.search),
+                  );
           }
         });
   }

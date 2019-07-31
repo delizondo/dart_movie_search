@@ -9,11 +9,13 @@ class MovieList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: _movieList.length,
-      itemBuilder: (BuildContext context, int index) {
-        return MovieWidget(_movieList[index]);
-      },
-    );
+    return GridView.count(
+        crossAxisCount: 2,
+        childAspectRatio: 0.7,
+        mainAxisSpacing: 4.0,
+        crossAxisSpacing: 4.0,
+        children: List.generate(_movieList.length, ((index) {
+          return MovieWidget(_movieList[index]);
+        })));
   }
 }

@@ -28,7 +28,6 @@ class _MyAppState extends State<MyApp> {
         title: 'Flutter Demo',
         theme: ThemeData(
           primarySwatch: Colors.blue,
-          backgroundColor: Colors.grey[900],
         ),
         home: Scaffold(
           appBar: AppBar(
@@ -37,7 +36,7 @@ class _MyAppState extends State<MyApp> {
           body: BlocProvider(
             builder: (context) => SearchBloc(_repository),
             child: Container(
-                color: Theme.of(context).backgroundColor,
+                color: Colors.grey[900],
                 child: Column(
                   children: <Widget>[SearchWidget(), SearchContent()],
                 )),

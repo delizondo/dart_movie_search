@@ -14,18 +14,22 @@ class MovieWidget extends StatefulWidget {
 class _MovieWidgetState extends State<MovieWidget> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-          color: Colors.white54, borderRadius: BorderRadius.circular(10.0)),
-      child: Column(
-        children: <Widget>[
-          CachedNetworkImage(
-            imageUrl: widget.movieItem.poster,
-            placeholder: (context, url) => new CircularProgressIndicator(),
-            errorWidget: (context, url, error) => new Icon(Icons.error),
-          )
-        ],
-      ),
+    return Card(
+      elevation: 2.0,
+      child: Container(child: LayoutBuilder(
+        builder: (context, constraints) {
+          return ClipRRect(
+            borderRadius: BorderRadius.circular(4.0),
+            child: CachedNetworkImage(
+              height: constraints.maxHeight,
+              fit: BoxFit.fill,
+              imageUrl: widget.movieItem.poster,
+              placeholder: (context, url) => new CircularProgressIndicator(),
+              errorWidget: (context, url, error) => new Icon(Icons.error),
+            ),
+          );
+        },
+      )),
     );
   }
 }
