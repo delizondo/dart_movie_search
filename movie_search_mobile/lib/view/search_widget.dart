@@ -27,7 +27,13 @@ class _SearchWidgetState extends State<SearchWidget> {
 
   void _onClearTapped() {
     _textController.text = '';
+    _storeSearchData("");
     _searchBloc.dispatch(SearchEvent(text: '', page: 1));
+  }
+
+  _storeSearchData(String text) {
+    AppConfig.of(context).searchData.page = 1;
+    AppConfig.of(context).searchData.searchTerm = text;
   }
 
   @override
@@ -37,6 +43,7 @@ class _SearchWidgetState extends State<SearchWidget> {
       child: TextField(
         textInputAction: TextInputAction.search,
         onSubmitted: (text) {
+          _storeSearchData(text);
           _searchBloc.dispatch(SearchEvent(text: text, page: 1));
         },
         controller: _textController,
