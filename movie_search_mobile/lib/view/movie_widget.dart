@@ -24,7 +24,9 @@ class _MovieWidgetState extends State<MovieWidget> {
               height: constraints.maxHeight,
               fit: BoxFit.fill,
               imageUrl: widget.movieItem.poster,
-              placeholder: (context, url) => new CircularProgressIndicator(),
+              placeholder: (context, url) => Center(
+                child: CircularProgressIndicator(),
+              ),
               errorWidget: (context, url, error) => new Icon(Icons.error),
             ),
           );

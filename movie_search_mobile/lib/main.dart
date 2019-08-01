@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_search_core/movie_search_core.dart';
 import 'package:movie_search_mobile/app_config.dart';
 import 'package:movie_search_mobile/view/search_content.dart';
-import 'package:movie_search_mobile/view/search_data.dart';
 
+import 'model/search_data.dart';
 import 'view/search_widget.dart';
 
 void main() {

@@ -18,7 +18,9 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     if (event.text.isEmpty) {
       yield SearchState.EMPTY();
     } else {
-      //yield SearchState.LOADING(RequestState.LOADING);
+      if (currentState.requestState == null) {
+        yield SearchState.LOADING(RequestState.LOADING);
+      }
       try {
         final result =
             await repository.getMoviesByTitle(event.text, event.page);
