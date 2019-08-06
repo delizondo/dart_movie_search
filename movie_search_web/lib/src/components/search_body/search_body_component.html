@@ -1,0 +1,16 @@
+<div *ngIf="searchState != null">
+    <div *ngIf="isEmpty">
+        Empty
+    </div>
+    <div *ngIf="isLoading">
+        Loading
+    </div>
+    <div *ngIf="isSuccess">
+        Success
+        <search-result [movieList]="items"></search-result>
+    </div>
+
+    <div *ngIf="isError">
+        Error
+    </div>
+</div>
