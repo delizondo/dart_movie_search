@@ -10,13 +10,9 @@ import 'package:movie_search_web/src/components/result_item/result_item_componen
     templateUrl: "search_result_component.html",
     styleUrls: ["search_result_component.css"],
     directives: [coreDirectives, ResultItem])
-class SearchResult implements OnInit {
+class SearchResult  {
   @Input()
   List<MovieItem> movieList;
 
-  @override
-  void ngOnInit() {
-    DivElement scrollable = querySelector("#scrollable");
-    scrollable.onScroll.listen((Event event) => print("its scrolling"));
-  }
+
 }
