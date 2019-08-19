@@ -1,16 +1,15 @@
 <div *ngIf="searchState != null">
     <div *ngIf="isEmpty">
-        Empty
+        <p>Please enter a term to begin</p>
     </div>
     <div *ngIf="isLoading">
-        Loading
+        <material-spinner></material-spinner>
     </div>
     <div *ngIf="isSuccess" id="success">
-        Success
         <search-result [movieList]="items"></search-result>
     </div>
 
     <div *ngIf="isError">
-        Error
+        <p>{{ errorMessage }}</p>
     </div>
 </div>
