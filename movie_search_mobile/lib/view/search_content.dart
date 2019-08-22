@@ -4,29 +4,6 @@ import 'package:movie_search_core/movie_search_core.dart';
 
 import 'movie_list.dart';
 
-/*class SearchContent extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<SearchBloc, SearchState>(
-        bloc: BlocProvider.of<SearchBloc>(context),
-        builder: (BuildContext context, SearchState state) {
-          if (state.requestState == null) {
-            return Text('Please enter a movie name to begin');
-          } else if (state.requestState == RequestState.LOADING) {
-            return CircularProgressIndicator();
-          } else if (state.requestState == RequestState.ERROR) {
-            return Text(state.message);
-          } else {
-            return (state.movieFeed == null || state.movieFeed.search.isEmpty)
-                ? Text("No Results")
-                : Expanded(
-                    child: MovieList(state.movieFeed.search),
-                  );
-          }
-        });
-  }
-}*/
-
 class SearchContent extends StatefulWidget {
   @override
   _SearchContentState createState() => _SearchContentState();
@@ -47,14 +24,31 @@ class _SearchContentState extends State<SearchContent> {
         bloc: _searchBloc,
         builder: (BuildContext context, SearchState state) {
           if (state.requestState == null) {
-            return Text('Please enter a movie name to begin');
+            return Text(
+              'Please enter a movie name to begin',
+              style: TextStyle(color: Colors.white),
+            );
           } else if (state.requestState == RequestState.LOADING) {
             return CircularProgressIndicator();
           } else if (state.requestState == RequestState.ERROR) {
-            return Text(state.message);
+            return Expanded(
+              child: Center(
+                child: Text(
+                  "No Results",
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+            );
           } else {
             return (state.movieList == null || state.movieList.isEmpty)
-                ? Text("No Results")
+                ? Expanded(
+                    child: Center(
+                      child: Text(
+                        "No Results",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  )
                 : Expanded(
                     child: MovieList(state.movieList, _searchBloc),
                   );
